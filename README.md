@@ -32,7 +32,7 @@ Operationally, each L2T STARS tile run loads the means and covariances of the ST
 
 ## 1. Introduction to Data Products
 
-The data format for the SBG products is described in the [ECOSTRESS Collection 3 landing page](https://github.com/ECOSTRESS-Collection-3).
+The data format for the ECOSTRESS products is described in the [ECOSTRESS Collection 3 landing page](https://github.com/ECOSTRESS-Collection-3).
 
 ## 2. L2T STARS NDVI and Albedo Product
 
