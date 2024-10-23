@@ -126,3 +126,22 @@ flowchart TB
 ```
 
 *Figure 1. Flowchart of the ECOSTRESS Collection 3 L2T STARS processing workflow.*
+
+NDVI and albedo are estimated at 70 m ECOSTRESS standard resolution with uncertainty for each UTC day in which there is an ECOSTRESS overpass by fusing temporally sparse but fine spatial resolution images from the Harmonized Landsat Sentinel (HLS) 2.0 product with daily, moderate spatial resolution images from the Suomi NPP Visible Infrared Imaging Radiometer Suite (VIIRS) VNP09GA product.
+
+Landsat and Sentinel surface reflectances are collected using the [HLS.jl](https://github.com/STARS-Data-Fusion/HLS.jl) package.
+
+VIIRS surface reflectance is downscaled and BRDF corrected using the [VNP43NRT.jl](https://github.com/STARS-Data-Fusion/VNP43NRT.jl) package. A pixelwise, lagged 16-day implementation of the VNP43 algorithm (Schaaf, 2017) is used for a near-real-time BRDF correction on the VNP09GA products to produce VIIRS NDVI and albedo.
+
+The data fusion is performed with a variant of the Spatial Timeseries for Automated high-Resolution multi-Sensor data fusion (STARS) algorithm developed by Dr. Margaret Johnson and Gregory H. Halverson at the Jet Propulsion Laboratory using the [STARS.jl](https://github.com/STARS-Data-Fusion/STARS.jl) package. STARS is a Bayesian timeseries methodology that provides streaming data fusion and uncertainty quantification through efficient Kalman filtering. Operationally, each L2T STARS tile run loads the means and covariances of the STARS model saved from the most recent tile run, then iteratively advances the means and covariances forward each day updating with fine imagery from HLS and/or moderate resolution imagery from VIIRS up to the day of the target ECOSTRESS overpass. 
+
+The layers of the L2T STARS product are listed in Table 2. All layers of this product are represented by 32-bit floating point arrays. The NDVI estimates and 1σ uncertainties (-UQ) are unitless from -1 to 1. The albedo estimates and 1σ uncertainties (-UQ) are proportions from 0 to 1. 
+
+| **Name** | **Description** | **Type** | **Units** | **Fill Value** | **No Data Value** | **Valid Min** | **Valid Max** |**Scale Factor** | **Size** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | -- |
+| NDVI | Normalized Difference Vegetation Index | float32 | Index | NaN | N/A | -1 | 1 | N/A | 13.4 mb |
+| NDVI-UQ | Normalized Difference Vegetation Index Uncertainty | float32 | Index | NaN | N/A | -1 | 1 | N/A | 13.4 mb |
+| albedo | Albedo | float32 | Ratio | NaN | N/A | 0 | 1 | N/A | 13.4 mb |
+| albedo-UQ | Albedo Uncertainty | float32 | Ratio | NaN | N/A | 0 | 1 | N/A | 13.4 mb |
+
+*Table 2. Listing of L2T STARS data layers.*
