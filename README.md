@@ -52,13 +52,13 @@ flowchart TB
     subgraph HLS_aquisition[HLS.jl]
         direction TB
         Landsat_reflectance[HLS<br>Landsat<br>30m<br>Surface<br>Reflectance]
-        Landsat_upsampled[Upsampled<br>Landsat<br>60m<br>Surface<br>Reflectance]
-        Landsat_NDVI[Landsat<br>60m<br>NDVI]
+        Landsat_upsampled[Upsampled<br>Landsat<br>70m<br>Surface<br>Reflectance]
+        Landsat_NDVI[Landsat<br>70m<br>NDVI]
         Sentinel_reflectance[HLS<br>Sentinel<br>30m<br>Surface<br>Reflectance]
-        Sentinel_upsampled[Upsampled<br>Sentinel<br>60m<br>Surface<br>Reflectance]
-        Sentinel_NDVI[Sentinel<br>60m<br>NDVI]
-        Landsat_albedo[Landsat<br>60m<br>Albedo]
-        Sentinel_albedo[Sentinel<br>60m<br>Albedo]
+        Sentinel_upsampled[Upsampled<br>Sentinel<br>70m<br>Surface<br>Reflectance]
+        Sentinel_NDVI[Sentinel<br>70m<br>NDVI]
+        Landsat_albedo[Landsat<br>70m<br>Albedo]
+        Sentinel_albedo[Sentinel<br>70m<br>Albedo]
     end
 
     subgraph bayesian_state[Bayesian State]
@@ -68,12 +68,12 @@ flowchart TB
         albedo_covariance_posterior[Albedo<br>Fine-Coarse<br>Covariance<br>Posterior<br>for<br>Next<br>Overpass]
     end
 
-    fine_NDVI_input[NDVI<br>60m<br>Composite]
+    fine_NDVI_input[NDVI<br>70m<br>Composite]
     NDVI_data_fusion[STARS.jl<br>NDVI<br>Data<br>Fusion]
     fine_NDVI_output[Fused<br>30m<br>NDVI]
     fine_NDVI_uncertainty[NDVI<br>Uncertainty]
 
-    fine_albedo_input[Albedo<br>60m<br>Composite]
+    fine_albedo_input[Albedo<br>70m<br>Composite]
     albedo_data_fusion[STARS.jl<br>Albedo<br>Data<br>Fusion]
     fine_albedo_output[Fused<br>30m<br>Albedo]
     fine_albedo_uncertainty[Albedo<br>Uncertainty]
