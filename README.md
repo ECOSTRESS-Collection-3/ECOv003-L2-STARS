@@ -78,7 +78,7 @@ flowchart TB
     fine_albedo_output[Fused<br>30m<br>Albedo]
     fine_albedo_uncertainty[Albedo<br>Uncertainty]
 
-    SBG_L2T_STARS(ECOv003<br>OTTER<br>L2T<br>STARS<br>NDVI<br>&<br>Albedo<br>Product)
+    SBG_L2T_STARS(ECOSTRESS<br>L2T<br>STARS<br>NDVI<br>&<br>Albedo<br>Product)
 
     VNP09GA_I --> VIIRS_downscaling
     VNP09GA_M --> VIIRS_downscaling
